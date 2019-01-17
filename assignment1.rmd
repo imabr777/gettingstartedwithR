@@ -1,0 +1,98 @@
+---
+title: "Getting Started with R"
+author: "imabr777"
+date: "January 14, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# My First RMarkdown Page
+## by imabr777
+### "For everything, there is a first" -Spock
+
+This is imabr777's first assignment for GEOG458. Our course page can be accessed [here](https://canvas.uw.edu/courses/1269928).
+
+![HUSKY REPRESENT](https://www.dynamiclanguage.com/wp-content/uploads/2016/08/uw-huskies-logo.png)
+
+Euler's Identity is the most beautiful equation in mathematics
+$$ e^{i\pi} + 1 = 0 $$
+
+City  | Population Estimates, July 1, 2017
+------------- | -------------
+Vancouver, WA  | 175,673
+Seattle, WA  | 724,745
+Portland, OR | 647,805
+
+
+```{r}
+100/10+2
+100/(10+2)
+
+(10 + 3 - 9) / (7 - 3)
+10 / 3 + 7 - 2
+10^3 - 7
+```
+
+```{r}
+x = 8 * 3
+y = 8 ^ 3
+z = 8 + 3
+
+x + 10
+x + y
+x + y / z
+y - x * z
+```
+
+```{r}
+numbers = seq(1,30)
+numbers
+
+strings = c("Bob","Martin","Jim")
+strings
+
+length(numbers)
+length(strings)
+sum(numbers)
+#sum(strings)
+#this command throws an error.
+```
+
+```{r}
+seq1 = seq(1,5)
+seq2 = seq(6,10)
+seq1
+seq2
+seq1 + seq2
+product = seq1 * seq2
+product
+```
+
+```{r}
+seq = c(seq1,seq2)
+seq
+matrix = rbind(seq1,seq2,product)
+matrix
+dataframe = data.frame(matrix)
+dataframe
+```
+
+
+# Loading the Data
+
+This is how to load data into R and how to convert it
+
+```{r}
+library(tidyverse)
+object1=read.csv("China_EO_49to17.csv")
+object2=as_tibble(object1)
+obj2_reversed = arrange(object2, desc(Year))
+obj2_reversed
+obj3 = select(filter(obj2_reversed, Year >= 2000), Year, Shanghai_Enterprise, Shanghai_Output, Beijing_Enterprise, Beijing_Output)
+obj3
+obj4 = mutate(obj3, Output_Ratio = Beijing_Output / Shanghai_Output)
+obj4
+```
